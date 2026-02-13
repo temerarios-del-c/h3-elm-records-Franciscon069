@@ -1,37 +1,104 @@
 module Helper exposing (..)
 
-import Html exposing (Html, div, h1, ul, li, text)
+import Html exposing (Html, div, h1, li, text, ul)
 
-type alias Videogame = { title : String, releaseYear : Int, available : Bool, downloads : Int, genres : List String }
-type alias Computer = { ram : String, model : String, brand : String, screenSize : String }
+
+
+-- TIPOS
+
+
+type alias Videogame =
+    { title : String
+    , releaseYear : Int
+    , available : Bool
+    , downloads : Int
+    , genres : List String
+    }
+
+
+type alias Computer =
+    { ram : String
+    , model : String
+    , brand : String
+    , screenSize : String
+    }
+
+
+
+-- DATOS
+
 
 videogames : List Videogame
 videogames =
-    [ { title = "Fornite", releaseYear = 2016, available = True, downloads = 1500000, genres = [ "Action", "Shooter" ] }
-    , { title = "Zelda", releaseYear = 2017, available = True, downloads = 7600000, genres = [ "Action", "Adventure" ] }
+    [ { title = "Fornite"
+      , releaseYear = 2016
+      , available = True
+      , downloads = 1500000
+      , genres = [ "Action", "Shooter" ]
+      }
+    , { title = "Zelda"
+      , releaseYear = 2017
+      , available = True
+      , downloads = 7600000
+      , genres = [ "Action", "Adventure" ]
+      }
     ]
 
+
 myLaptop : Computer
-myLaptop = { ram = "16GB", model = "MacBook Pro", brand = "Apple", screenSize = "14 inches" }
+myLaptop =
+    { ram = "16GB"
+    , model = "MacBook Pro"
+    , brand = "Apple"
+    , screenSize = "14 inches"
+    }
+
+
+
+-- LÓGICA
+
 
 add2 : Int -> Int -> Int
-add2 x y = x + y
+add2 x y =
+    x + y
+
 
 add3 : Float -> Float -> Float -> Float
-add3 x y z = x + y + z
+add3 x y z =
+    x + y + z
+
 
 calc : Int -> Int -> (Int -> Int -> Int) -> Int
-calc x y op = op x y
+calc x y op =
+    op x y
+
 
 languageNames : List { name : String, releaseYear : Int, currentVersion : String } -> List String
-languageNames list = List.map .name list
+languageNames list =
+    List.map .name list
+
 
 onlyStudents : List { name : String, uType : String } -> List String
 onlyStudents users =
-    List.map (\u -> if u.uType == "Student" then u.name else "") users
+    List.map
+        (\u ->
+            if u.uType == "Student" then
+                u.name
+
+            else
+                ""
+        )
+        users
+
 
 getVideogameGenres : List Videogame -> List (List String)
-getVideogameGenres games = List.map .genres games
+getVideogameGenres games =
+    List.map .genres games
+
+
+
+-- VISTA
+
 
 main : Html msg
 main =
